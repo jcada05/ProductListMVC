@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProductListMvc.Models.Product>
+
+<h1>Products</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    <a class="btn btn-primary" href="/Product/Details/@product.Id" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">Details</a> |
+                    <a class="btn btn-secondary" href="/Product/Edit/@product.Id" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">Edit</a> |
+                    <a class="btn btn-danger" href="/Product/Delete/@product.Id" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Product/Create" class=" btn btn-success" asp-controller="Product" asp-action="Create">Add New Product</a>
